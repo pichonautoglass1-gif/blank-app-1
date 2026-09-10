@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { connectorRegistry } from "@/lib/connectors/registry";
 import { createClient } from "@/lib/supabase/server";
+import "./sources.css";
 
 export const dynamic = "force-dynamic";
 
