@@ -1,5 +1,5 @@
-import { SalesRadarDashboard } from "@/components/sales-radar-dashboard";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <SalesRadarDashboard />;
+  redirect("/dashboard");
 }
