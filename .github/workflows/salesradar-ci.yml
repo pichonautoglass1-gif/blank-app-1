@@ -2,7 +2,7 @@ name: SalesRadar CI
 
 on:
   push:
-    branches: [main, salesradar-mvp]
+    branches: [main, salesradar-mvp, salesradar-v2]
   pull_request:
     branches: [main]
 
