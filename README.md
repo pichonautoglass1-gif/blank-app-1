@@ -1,19 +1,35 @@
-# 🎈 Blank app template
+# SalesRadar AI
 
-A simple Streamlit app template for you to modify!
+AI buyer-intent radar for local service businesses. This MVP is configured around Phoenix auto glass as the first vertical.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+## Included in this branch
 
-### How to run it on your own machine
+- Responsive Next.js dashboard
+- Live-lead style feed with lead scoring, status filters, territory/source metadata, and suggested replies
+- `/api/score` route with OpenAI Responses API integration and a heuristic fallback
+- Supabase schema for businesses, territories, signals, and leads
+- Environment variable template
 
-1. Install the requirements
+## Run locally
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-2. Run the app
+Open `http://localhost:3000`.
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+## Environment
+
+Set `OPENAI_API_KEY` to enable AI scoring. If it is absent, the scoring endpoint stays functional using the local heuristic scorer. Set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` after creating the Supabase project.
+
+## Next integration milestones
+
+1. Apply `supabase/schema.sql` to the connected Supabase project.
+2. Replace seeded demo leads with Supabase reads/realtime subscriptions.
+3. Add the first approved/public signal connector and normalize incoming posts into `signals`.
+4. Route each signal through `/api/score`, territory-match it, and create a `leads` record.
+5. Add authentication, notifications, and subscription billing.
+
+Important: platform connectors should use approved APIs and permissions rather than unauthorized scraping.
