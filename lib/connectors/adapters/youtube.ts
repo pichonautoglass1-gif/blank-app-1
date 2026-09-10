@@ -49,8 +49,11 @@ export async function fetchYouTubeCommentSignals(input: {
 
   const signals = (payload.items ?? []).flatMap<NormalizedSignal>((thread) => {
     const comment = thread.snippet?.topLevelComment;
-    const text = comment?.snippet?.textOriginal?.trim();
+    if (!comment) return [];
+
+    const text = comment.snippet?.textOriginal?.trim();
     if (!text) return [];
+
     const commentId = comment.id || thread.id;
     return [{
       provider: "youtube",
